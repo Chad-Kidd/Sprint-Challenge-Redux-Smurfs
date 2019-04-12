@@ -2,11 +2,16 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+
+import axios from 'axios';
+
 export const ADDING_SMURFS = "ADDING_SMURFS";
 export const ADDED_SMURF ="ADDED_SMURF";
-export const FETCHING_SMURFS = "FETCHING_SMURFS";
+export const FETCHING_SMURFS = "FETCHING_SMURFS"; //get
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
+
+
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -28,6 +33,7 @@ export const FAILURE = "FAILURE";
    .then(response => {
     //  dispatch
     dispatch({ type: SUCCESS, payload: response.data})
+    // payload returns data
    })
   // error
    .catch(error => {
@@ -35,7 +41,7 @@ export const FAILURE = "FAILURE";
     });
   }
 
-  
+
   export const addSmurf= (newSmurf) => dispatch => {
     dispatch({ type: ADDING_SMURFS })
      //  axios call

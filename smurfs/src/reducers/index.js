@@ -1,8 +1,9 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-  import { FETCHING_SMURFS } from '../actions'
+  import { FETCHING_SMURFS, FAILURE, SUCCESS } from '../actions'
   import { ADDING_SMURFS } from '../actions'
+
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
  const initialState = {
@@ -22,16 +23,28 @@
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
- export default function reducer(state = initialState, action) {
+ const reducer = (state = initialState, action) => {
    switch(action.type) {
-     case ADDING_SMURFS: 
+     case FETCHING_SMURFS: 
      return {
        ...state,
-
+      fetchingSmurfs: true
      }
-     case FETCHING_SMURFS:
+     case SUCCESS:
+     return {
+      ...state,
+      fetchingSmurfs: false, //not sure if should be true of false we'll see
+      smurfs: [...state.smurfs, action.payload]
+     }
+     case FAILURE:
      return {
 
+     }
+     case ADDING_SMURFS:
+     return {
+      ...state,
+      smurfs: [...action.payload]
+      // returns state + newSmurf
      }
      default:
      return state;

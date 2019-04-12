@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+import getSmurfs from '../actions' //actions with axios calls
+import {connect} from 'react-redux' //connec to connect app to redux
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-class App extends Component {
+class Smurfs extends Component {
   render() {
     return (
       <div className="App">
@@ -19,4 +20,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mstp = (state) => {
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
+  }
+}
+
+// connect mstp and action with axios call
+export default connect(mstp, {getSmurfs})(Smurfs);
