@@ -19,11 +19,10 @@ class Smurfs extends Component {
   }
 
   render() {
-    return (
+    return(
       <div className="Smurfs">
           <h1> WELCOME TO SMURFSVILLE </h1>
-      
-        {this.props.smurfs.map((smurfs) => { 
+      {this.props.smurfs.map((smurfs) => { 
        return( <div>
           <h2>{smurfs.name}</h2>
           <h3>{smurfs.age}</h3>

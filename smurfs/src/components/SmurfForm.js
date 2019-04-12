@@ -13,16 +13,20 @@ class SmurfForm extends Component {
 
   handleNewSmurf = (event) => {
       event.preventDefault();
-    this.props.addSmurf();
-
+    this.props.addSmurf(
+       { name: this.state.name,
+        age: this.state.age,
+        height: this.state.height
+        }
+    );
   }
 
-  handleInputChange = e => {
-    this.setState
-    ({ ...this.state, 
-        [e.target.name]: e.target.value });
-        // set value/key ALWAYS NEEDED for forms
-  };
+  handleInputChange = event => {
+    this.setState({
+        [event.target.name]: event.target.value,
+    });
+}        // set value/key ALWAYS NEEDED for forms
+  
 
   render() {
     return (
@@ -56,11 +60,7 @@ class SmurfForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-    return {
-      smurfs: state.smurfs
-    }
-}
+const mapStateToProps = state => ({smurfs: state.smurfs})
 
 // connect action 
 export default connect(mapStateToProps, {addSmurf})(SmurfForm)

@@ -42,9 +42,10 @@
 
      };
      case ADDING_SMURFS:
+     console.log(action.payload, "payload")
      return {
       ...state,
-      smurfs: [action.payload]
+      smurfs: [...state.smurfs, ...action.payload]
       // returns state + newSmurf
      };
      default:

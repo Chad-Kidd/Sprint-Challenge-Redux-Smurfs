@@ -44,13 +44,15 @@ export const FAILURE = "FAILURE";
 
 
   export const addSmurf= (newSmurf) => dispatch => {
-    dispatch({ type: ADDING_SMURFS })
      //  axios call
    axios.post(`http://localhost:3333/smurfs`, newSmurf)
    .then(response => {
-    //  dispatch
-    dispatch({ type: ADDED_SMURF, payload: response.data})
+     console.log("response",response.data)
+   dispatch({ type: ADDING_SMURFS, payload: response.data})
    })
+   .catch(error => {
+    dispatch({ type: FAILURE, payload: error})
+    });
   }
  
   export default getSmurfs;
