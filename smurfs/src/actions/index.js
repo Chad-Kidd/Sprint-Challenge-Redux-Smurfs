@@ -3,7 +3,10 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 export const ADDING_SMURFS = "ADDING_SMURFS";
+export const ADDED_SMURF ="ADDED_SMURF";
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
+export const SUCCESS = "SUCCESS";
+export const FAILURE = "FAILURE";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -16,19 +19,31 @@ export const FETCHING_SMURFS = "FETCHING_SMURFS";
    D - deleteSmurf
 */
 
-  export function addSmurf() {
-    const smurf = [{"name":"Brainey","age":200,"height":"5cm"}]
-    return {
-      type: ADDING_SMURFS,
-      payload: 
-
-    };
+ // change from func to const
+  export const getSmurfs = () => dispatch => {
+    // dispatch / THUNK
+    dispatch({ type: FETCHING_SMURFS })
+  //  axios call
+   axios.get(`http://localhost:3333/smurfs`)
+   .then(response => {
+    //  dispatch
+    dispatch({ type: SUCCESS, payload: response.data})
+   })
+  // error
+   .catch(error => {
+    dispatch({ type: FAILURE, payload: error})
+    });
   }
 
-  export function getSmurfs() {
-    return {
-      type: FETCHING_SMURFS,
-      payload: something
-
-    };
+  
+  export const addSmurf= (newSmurf) => dispatch => {
+    dispatch({ type: ADDING_SMURFS })
+     //  axios call
+   axios.get(`http://localhost:3333/smurfs`, newSmurf)
+   .then(response => {
+    //  dispatch
+    dispatch({ type: ADDED_SMURF, payload: response.data})
+   })
   }
+
+ 

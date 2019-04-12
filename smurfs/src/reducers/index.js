@@ -5,9 +5,9 @@
   import { ADDING_SMURFS } from '../actions'
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
- const initialState= {
+ const initialState = {
    smurfs: [],
-   fetchingSmurfs: false
+   fetchingSmurfs: false,
    addingSmurf: false
   //  updatingSmurf: false
   //  deletingSmurf: false
