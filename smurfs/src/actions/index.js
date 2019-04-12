@@ -2,6 +2,8 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const ADDING_SMURFS = "ADDING_SMURFS";
+export const FETCHING_SMURFS = "FETCHING_SMURFS";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +15,20 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+  export function addSmurf() {
+    const smurf = [{"name":"Brainey","age":200,"height":"5cm"}]
+    return {
+      type: ADDING_SMURFS,
+      payload: 
+
+    };
+  }
+
+  export function getSmurfs() {
+    return {
+      type: FETCHING_SMURFS,
+      payload: something
+
+    };
+  }

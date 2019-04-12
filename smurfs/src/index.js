@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer './reducers';
 
-const store = createStore(rootReducer , // this is the most basic reducer. A function that returns and object. Replace it.
+const store = createStore(rootReducer, // this is the most basic reducer. A function that returns and object. Replace it.
   applyMiddleware(thunk, logger)
 );
 
