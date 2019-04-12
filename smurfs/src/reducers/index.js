@@ -29,23 +29,24 @@
      return {
        ...state,
       fetchingSmurfs: true
-     }
+     };
      case SUCCESS:
+    //  console.log("payload", action.payload)
      return {
       ...state,
       fetchingSmurfs: false, //not sure if should be true of false we'll see
-      smurfs: [...state.smurfs, action.payload]
-     }
+      smurfs: [...state.smurfs, ...action.payload]
+     };
      case FAILURE:
      return {
 
-     }
+     };
      case ADDING_SMURFS:
      return {
       ...state,
-      smurfs: [...action.payload]
+      smurfs: [action.payload]
       // returns state + newSmurf
-     }
+     };
      default:
      return state;
    }

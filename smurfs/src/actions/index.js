@@ -5,6 +5,7 @@
 
 import axios from 'axios';
 
+
 export const ADDING_SMURFS = "ADDING_SMURFS";
 export const ADDED_SMURF ="ADDED_SMURF";
 export const FETCHING_SMURFS = "FETCHING_SMURFS"; //get
@@ -45,11 +46,12 @@ export const FAILURE = "FAILURE";
   export const addSmurf= (newSmurf) => dispatch => {
     dispatch({ type: ADDING_SMURFS })
      //  axios call
-   axios.get(`http://localhost:3333/smurfs`, newSmurf)
+   axios.post(`http://localhost:3333/smurfs`, newSmurf)
    .then(response => {
     //  dispatch
     dispatch({ type: ADDED_SMURF, payload: response.data})
    })
   }
-
+ 
+  export default getSmurfs;
  
