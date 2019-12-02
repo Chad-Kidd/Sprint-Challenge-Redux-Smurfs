@@ -3,6 +3,17 @@
   Be sure to export each action type so you can pull it into your reducer
 */
 
+import axios from 'axios';
+
+
+export const ADDING_SMURFS = "ADDING_SMURFS";
+export const ADDED_SMURF ="ADDED_SMURF";
+export const FETCHING_SMURFS = "FETCHING_SMURFS"; //get
+export const SUCCESS = "SUCCESS";
+export const FAILURE = "FAILURE";
+
+
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -13,3 +24,36 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+ // change from func to const
+  export const getSmurfs = () => dispatch => {
+    // dispatch / THUNK
+    dispatch({ type: FETCHING_SMURFS })
+  //  axios call
+   axios.get(`http://localhost:3333/smurfs`)
+   .then(response => {
+    //  dispatch
+    dispatch({ type: SUCCESS, payload: response.data})
+    // payload returns data
+   })
+  // error
+   .catch(error => {
+    dispatch({ type: FAILURE, payload: error})
+    });
+  }
+
+
+  export const addSmurf= (newSmurf) => dispatch => {
+     //  axios call
+   axios.post(`http://localhost:3333/smurfs`, newSmurf)
+   .then(response => {
+     console.log("response",response.data)
+   dispatch({ type: ADDING_SMURFS, payload: response.data})
+   })
+   .catch(error => {
+    dispatch({ type: FAILURE, payload: error})
+    });
+  }
+ 
+  export default getSmurfs;
+ 
